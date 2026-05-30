@@ -1,0 +1,47 @@
+add_newline = true
+
+format = """
+[](fg:#141414)\
+$directory\
+[](fg:#141414 bg:#f0f0f0)\
+$git_branch\
+$git_status\
+[](fg:#f0f0f0 bg:#a769ff)\
+$cmd_duration\
+[](fg:#a769ff  bg:#6a00ff)\
+$time\
+[](fg:#6a00ff)\
+$line_break\
+$character
+"""
+
+[directory]
+style = "fg:#ECEFF4 bg:#141414 bold"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+style = "fg:#ff6600 bg:#f0f0f0 bold"
+format = "[  $branch ]($style)"
+
+[git_status]
+style = "fg:#ff6600 bg:#f0f0f0 bold"
+format = "[$all_status$ahead_behind ]($style)"
+
+[cmd_duration]
+min_time = 500
+style = "fg:#ECEFF4 bg:#a769ff bold"
+format = "[  $duration ]($style)"
+
+[character]
+success_symbol = "[➜](bold #09ff00)"
+error_symbol = "[➜](bold #fc031c)"
+vicmd_symbol = "[➜](bold #EBCB8B)"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "fg:#eeeeee bg:#6a00ff bold"
+format = "[  $time ]($style)"
+

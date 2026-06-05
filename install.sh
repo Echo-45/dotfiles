@@ -22,7 +22,7 @@ else
     exit 1
 fi
 
-echo "### " "$pkgMgr" "found" " ###"
+echo "=== " "$pkgMgr" "found" " ==="
 
 # Packages to install
 

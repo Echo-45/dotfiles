@@ -32,6 +32,10 @@ packages=(
     starship
     zsh
     neovim
+    npm
+    tree-sitter-cli
+    kitty
+    alacritty
 )
 
 echo "Installing packages..."

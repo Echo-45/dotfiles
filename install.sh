@@ -3,26 +3,32 @@
 
 #!/bin/bash
 
+
+
+stowing() {
+    cd ~/.dotfiles
+    for dir in */; do 
+	    stow "$dir"
+    done
+}
+
+
 # Check for Package manager
 
-if command -v brew &> /dev/null; then
-    INSTALL="brew install"
-    pkgMgr="brew"
-elif command -v apt &> /dev/null; then
-    INSTALL="sudo apt install -y"
-    pkgMgr="apt"
-elif command -v pacman &> /dev/null; then
-    INSTALL="sudo pacman -S"
-    pkgMgr="pacman"
-elif command -v dnf &> /dev/null; then
-    INSTALL="sudo dnf install -y"
-    pkgMgr="dnf"
-else
-    echo "No supported package manager found"
-    exit 1
-fi
+echo "==========================================="
+echo "===== What pkg manager is installed? ======"
+echo "==========================================="
 
-echo "=== " "$pkgMgr" "found" " ==="
+read -r PkgMgr
+
+case "$PkgMgr" in 
+    apt)    installedPkgMgr="apt install" ;;
+    brew)   installedPkgMgr="brew install" ;;
+    pacman) installedPkgMgr="pacman -S" ;;
+    *)      echo "Unknown pkg mgr"; exit ;;
+    
+esac
+
 
 # Packages to install
 
@@ -35,21 +41,35 @@ packages=(
     npm
     tree-sitter-cli
     kitty
-    alacritty
+    aacritty
 )
 
-echo "Installing packages..."
-for pkg in "${packages[@]}"; do
-	$INSTALL "$pkg"
-done
+echo "==========================================="
+echo "========= Installing packages... =========="
+echo "==========================================="
+
+#for pkg in "${packages[@]}"; do
+#	$installedPkgMgr "$pkg"
+#done
 
 
-echo "Stowing dotfiles..."
-cd ~/.dotfiles
+echo "==========================================="
+echo "========== Stowing dotfiles... ============"
+echo "==========================================="
 
-for dir in */; do 
-	stow "$dir"
-done
+
+read -r -p "Continue? (y/n/skip): " CONFIRM
+
+case "$CONFIRM" in
+    y|Y) echo "Continuing..."
+    stowing
+    ;;
+    n|N) echo "Aborting."; exit 1 ;;
+    skip|s|S) echo "Skipping." ;;
+    *) echo "Invalid input."; exit 1 ;;
+esac
+
+
 
 echo "Done!!"
 

@@ -6,11 +6,11 @@ $directory\
 [](fg:#141414 bg:#f0f0f0)\
 $git_branch\
 $git_status\
-[](fg:#f0f0f0 bg:#a769ff)\
+[](fg:#f0f0f0 bg:#F08E6A)\
 $cmd_duration\
-[](fg:#a769ff  bg:#6a00ff)\
+[](fg:#F08E6A  bg:#E95420)\
 $time\
-[](fg:#6a00ff)\
+[](fg:#E95420)\
 $line_break\
 $character
 """
@@ -31,7 +31,7 @@ format = "[$all_status$ahead_behind ]($style)"
 
 [cmd_duration]
 min_time = 500
-style = "fg:#ECEFF4 bg:#a769ff bold"
+style = "fg:#ECEFF4 bg:#F08E6A bold"
 format = "[  $duration ]($style)"
 
 [character]
@@ -42,6 +42,6 @@ vicmd_symbol = "[➜](bold #EBCB8B)"
 [time]
 disabled = false
 time_format = "%H:%M"
-style = "fg:#eeeeee bg:#6a00ff bold"
+style = "fg:#eeeeee bg:#E95420 bold"
 format = "[  $time ]($style)"
 

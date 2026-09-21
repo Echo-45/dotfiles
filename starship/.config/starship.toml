@@ -23,7 +23,7 @@ truncate_to_repo = true
 
 [git_branch]
 style = "fg:#ff6600 bg:#f0f0f0 bold"
-format = "[  $branch ]($style)"
+format = "[ $branch ]($style)"
 
 [git_status]
 style = "fg:#ff6600 bg:#f0f0f0 bold"
